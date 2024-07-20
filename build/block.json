@@ -1,0 +1,136 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "nickpagz/slider-toggle-anything",
+  "version": "0.1.0",
+  "title": "Toggle Anything",
+  "category": "widgets",
+  "description": "A customizable slider toggle switch to control visibility of any block.",
+  "example": {},
+  "attributes": {
+    "onClass": {
+      "type": "string",
+      "default": "toggle-on"
+    },
+    "offClass": {
+      "type": "string",
+      "default": "toggle-off"
+    },
+    "onColor": {
+      "type": "string",
+      "default": "#2196F3"
+    },
+    "offColor": {
+      "type": "string",
+      "default": "#ccc"
+    },
+    "toggleColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "sliderWidth": {
+      "type": "number",
+      "default": 60
+    },
+    "sliderHeight": {
+      "type": "number",
+      "default": 34
+    },
+    "buttonWidth": {
+      "type": "number",
+      "default": 26
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 17
+    },
+    "gap": {
+      "type": "number",
+      "default": 4
+    },
+    "onText": {
+      "type": "string",
+      "default": ""
+    },
+    "offText": {
+      "type": "string",
+      "default": ""
+    },
+    "fontColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 0
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 0
+    },
+    "fontSize": {
+      "type": "string",
+      "default": ""
+    },
+    "fontWeight": {
+      "type": "number",
+      "default": 400
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "fontAppearance": {
+      "type": "string",
+      "default": ""
+    },
+    "blockId": {
+      "type": "string",
+      "default": ""
+    },
+    "offColorGradient": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSSwitchWrapper": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSSwitch": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSSliderRound": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSButton": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSButtonActivated": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSTextWrapper": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSOff": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSSOn": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "slider-toggle-anything",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
