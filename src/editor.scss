@@ -3,5 +3,12 @@
  */
 
 .wp-block-nickpagz-slider-toggle-anything {
-	//nothing to see here
+	.slider-toggle {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.slider-toggle-noscript-hide {
+	display: block;
 }

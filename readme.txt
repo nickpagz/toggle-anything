@@ -2,7 +2,7 @@
 Contributors:      Nick Pagazani
 Tags:              block, switch, toggle
 Tested up to:      6.6
-Stable tag:        0.1.0
+Stable tag:        0.2.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,3 +38,7 @@ Yes.
 = 0.1.0 =
 * Release
 
+= 0.2.0 =
+* Option for display type (block, flex, etc)
+* Default switch position on page load
+* No JavaScript page load fallback
