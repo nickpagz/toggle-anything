@@ -30,6 +30,8 @@ export default function save({ attributes }) {
 		customCSSTextWrapper,
 		customCSSOff,
         customCSSOn,
+		displayType,
+		defaultState,
 	} = attributes;
 
 	return (
@@ -40,6 +42,8 @@ export default function save({ attributes }) {
 				data-off-class={offClass}
 				data-on-color={onColor}
 				data-off-color={offColor}
+				data-display-type={displayType}
+				data-default-state={defaultState}
 				style={{
 					'--slider-before-height': `${sliderHeight - 2 * gap}px`,
 					'--slider-before-width': `${buttonWidth}px`,
@@ -102,6 +106,21 @@ export default function save({ attributes }) {
                     }
                 `}
             </style>
+			<noscript>
+                <style>
+                    {`
+                        .slider-toggle.${blockId} {
+                            display: none;
+                        }
+						.${defaultState === 'on' ? offClass : onClass} {
+                            display: none;
+                        }
+                        .${defaultState === 'on' ? onClass : offClass} {
+                            display: block;
+                        }
+                    `}
+                </style>
+            </noscript>
 		</div>
 	);
 }

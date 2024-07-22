@@ -37,6 +37,8 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 		customCSSTextWrapper,
 		customCSSOff,
         customCSSOn,
+		displayType,
+		defaultState,
 	} = attributes;
 
 	useEffect(() => {
@@ -57,7 +59,7 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Toggle Design Settings', 'slider-toggle-anything')} initialOpen={false}>
+				<PanelBody title={__('Toggle Settings', 'slider-toggle-anything')} initialOpen={false}>
 					<TextControl
 						label={__('Off Class', 'slider-toggle-anything')}
 						value={offClass}
@@ -68,6 +70,31 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 						value={onClass}
 						onChange={(value) => setAttributes({ onClass: value })}
 					/>
+					<SelectControl
+						label={__('Default State', 'slider-toggle-anything')}
+						value={defaultState}
+						options={[
+							{ label: __('Off', 'slider-toggle-anything'), value: 'off' },
+							{ label: __('On', 'slider-toggle-anything'), value: 'on' }
+						]}
+						onChange={(value) => setAttributes({ defaultState: value })}
+						help={__('Non-JS browsers will show the default state, the toggle button will also be hidden. Use the class "slider-toggle-noscript-hide" to hide additional blocks in non-JS browsers.', 'slider-toggle-anything')}
+					/>
+					<SelectControl
+                        label={__('Display Type', 'slider-toggle-anything')}
+                        value={displayType}
+                        options={[
+                            { label: __('Block (default)', 'slider-toggle-anything'), value: 'block' },
+                            { label: __('Flex', 'slider-toggle-anything'), value: 'flex' },
+                            { label: __('Inline', 'slider-toggle-anything'), value: 'inline' },
+                            { label: __('Inline-Block', 'slider-toggle-anything'), value: 'inline-block' },
+                            { label: __('Grid', 'slider-toggle-anything'), value: 'grid' },
+                        ]}
+                        onChange={(value) => setAttributes({ displayType: value })}
+						help={__('If you don\'t know what this is, leave it as "block". If it breaks the layout, experiment with the other settings.', 'slider-toggle-anything')}
+                    />
+				</PanelBody>
+				<PanelBody title={__('Toggle Design Settings', 'slider-toggle-anything')} initialOpen={false}>
 					<RangeControl
 						label={__('Slider Width', 'slider-toggle-anything')}
 						value={sliderWidth}
@@ -242,6 +269,7 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 					className={`slider-toggle ${blockId}`}
 					data-on-class={onClass}
 					data-off-class={offClass}
+					data-default-state={defaultState}
 					style={{
 						'--slider-before-height': `${sliderHeight - 2 * gap}px`,
 						'--slider-before-width': `${buttonWidth}px`,
@@ -253,7 +281,7 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 					}}
 				>
 				<label className="switch" style={{ width: `${sliderWidth}px`, height: `${sliderHeight}px` }}>
-						<input type="checkbox" onChange={handleToggleChange} />
+						<input type="checkbox" onChange={handleToggleChange} defaultChecked={defaultState === 'on'} />
 						<span className="slider round" style={{ backgroundColor: offColor, borderRadius: `${borderRadius}px` }}>
 							<span className="slider-text" style={{
 								display: 'flex',

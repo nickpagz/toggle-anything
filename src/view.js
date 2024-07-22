@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+	document.body.classList.add('npagz-slider-toggle-js-enabled');
+
 	const toggles = document.querySelectorAll('.slider-toggle input[type="checkbox"]');
 	
 	toggles.forEach(toggle => {
@@ -7,11 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		const offClass = parent.getAttribute('data-off-class');
 		const onColor = parent.getAttribute('data-on-color');
 		const offColor = parent.getAttribute('data-off-color');
-		const sliderWidth = parseFloat(parent.style.width);
-		const sliderHeight = parseFloat(parent.style.height);
-		const sliderBorderRadius = parseFloat(parent.style.borderRadius);
-		const buttonWidth = parseFloat(parent.querySelector('.slider').style.width);
-		const gap = parseFloat(parent.querySelector('.slider').style.left);
+		const displayType = parent.getAttribute('data-display-type') || 'block';
+		const defaultState = parent.getAttribute('data-default-state') || 'off';
 
 		const slider = parent.querySelector('.slider');
 		
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (toggle.checked) {
 				slider.style.backgroundColor = onColor;
 				document.querySelectorAll(`.${onClass}`).forEach(element => {
-					element.style.display = 'block';
+					element.style.display = displayType;
 				});
 				document.querySelectorAll(`.${offClass}`).forEach(element => {
 					element.style.display = 'none';
@@ -30,12 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
 					element.style.display = 'none';
 				});
 				document.querySelectorAll(`.${offClass}`).forEach(element => {
-					element.style.display = 'block';
+					element.style.display = displayType;
 				});
 			}
 		};
 
-		// Set initial visibility based on the toggle state
+		// Set initial visibility based on the default state
+		if (defaultState === 'on') {
+			toggle.checked = true;
+		}
 		updateVisibility();
 
 		// Add event listener for changes

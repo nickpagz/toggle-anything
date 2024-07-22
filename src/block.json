@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "nickpagz/slider-toggle-anything",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"title": "Toggle Anything",
 	"category": "widgets",
 	"description": "A customizable slider toggle switch to control visibility of any block.",
@@ -123,6 +123,14 @@
 		"customCSSOn": {
 			"type": "string",
 			"default": ""
+		},
+		"displayType": {
+			"type": "string",
+			"default": "block"
+		},
+		"defaultState": {
+		  "type": "string",
+		  "default": "off"
 		}
 	},
 	"supports": {

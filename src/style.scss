@@ -1,8 +1,16 @@
 /* style.scss */
 .wp-block-nickpagz-slider-toggle-anything {
 	.slider-toggle {
-		display: flex;
+		display: none;
 		align-items: center;
+	}
+
+	.noscript-fallback {
+		display: none;
+	}
+
+	.noscript-fallback.visible {
+		display: block;
 	}
 
 	.switch {
@@ -69,4 +77,20 @@
 	.slider-toggle .switch input:checked + .slider::before {
 		transform: translateX(var(--slider-before-translate-x));
 	}
+}
+
+.npagz-slider-toggle-js-enabled .slider-toggle {
+	display: flex;
+}
+
+.npagz-slider-toggle-js-enabled .noscript-fallback {
+	display: flex;
+}
+
+.slider-toggle-noscript-hide {
+	display: none;
+}
+  
+.npagz-slider-toggle-js-enabled .slider-toggle-noscript-hide {
+	display: block;
 }
