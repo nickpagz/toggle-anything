@@ -2,7 +2,7 @@
 Contributors:      Nick Pagazani
 Tags:              block, switch, toggle
 Tested up to:      6.6.1
-Stable tag:        0.2.0
+Stable tag:        0.2.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ Yes.
 1. Coming soon
 
 == Changelog ==
+
+= 0.2.1 =
+* Tweak no-js functionality
 
 = 0.2.0 =
 * Option for display type (block, flex, etc)
