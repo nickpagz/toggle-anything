@@ -10,5 +10,47 @@
 }
 
 .slider-toggle-noscript-hide {
-	display: block;
+
+	&__block {
+		display: block;
+	}
+
+	&__flex {
+		display: flex;
+	}
+
+	&__inline {
+		display: inline;
+	}
+
+	&__inline-block {
+		display: inline-block;
+	}
+
+	&__grid {
+		display: grid;
+	}
+}
+
+.slider-toggle-noscript-show {
+
+	&__block {
+		display: block;
+	}
+
+	&__flex {
+		display: flex;
+	}
+
+	&__inline {
+		display: inline;
+	}
+
+	&__inline-block {
+		display: inline-block;
+	}
+
+	&__grid {
+		display: grid;
+	}
 }

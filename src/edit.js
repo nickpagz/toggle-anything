@@ -78,7 +78,7 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 							{ label: __('On', 'slider-toggle-anything'), value: 'on' }
 						]}
 						onChange={(value) => setAttributes({ defaultState: value })}
-						help={__('Non-JS browsers will show the default state, the toggle button will also be hidden. Use the class "slider-toggle-noscript-hide" to hide additional blocks in non-JS browsers.', 'slider-toggle-anything')}
+						help={__('Non-JS browsers will also show the default state. See the "Additional Information" section below for more information on non-JS browser handling.', 'slider-toggle-anything')}
 					/>
 					<SelectControl
                         label={__('Display Type', 'slider-toggle-anything')}
@@ -91,7 +91,7 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
                             { label: __('Grid', 'slider-toggle-anything'), value: 'grid' },
                         ]}
                         onChange={(value) => setAttributes({ displayType: value })}
-						help={__('If you don\'t know what this is, leave it as "block". If it breaks the layout, experiment with the other settings.', 'slider-toggle-anything')}
+						help={__('Applies to the toggle on/off classes. If you don\'t know what this is, leave it as "block". If it breaks the layout, experiment with the other settings.', 'slider-toggle-anything')}
                     />
 				</PanelBody>
 				<PanelBody title={__('Toggle Design Settings', 'slider-toggle-anything')} initialOpen={false}>
@@ -263,6 +263,13 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
                         onChange={(value) => setAttributes({ customCSSOn: value })}
                     />
                 </PanelBody>
+				<PanelBody title={__('Additional Information', 'slider-toggle-anything')} initialOpen={false}>
+					<p>{__('The toggle button will be hidden on non-JS browsers as it won\'t be functional anyways.', 'slider-toggle-anything')}</p>
+					<p>{__('This block includes helper css classes to hide or show other selected blocks on non-JS browsers.', 'slider-toggle-anything')}</p>
+					<p>{__('Add the classes mentioned below to the Advanced > ADDITIONAL CSS CLASS(ES) field of the blocks you want to show or hide on non-JS browsers.', 'slider-toggle-anything')}</p>
+					<p>{__('Use the classes "slider-toggle-noscript-hide__block", "__flex", etc., to hide selected blocks in non-JS browsers.', 'slider-toggle-anything')}</p>
+					<p>{__('Use the classes "slider-toggle-noscript-show__block", "__flex", etc., to show selected blocks in non-JS browsers', 'slider-toggle-anything')}</p>
+				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
 				<div
