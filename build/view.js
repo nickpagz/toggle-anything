@@ -1,1 +1,49 @@
-document.addEventListener("DOMContentLoaded",(function(){document.body.classList.add("npagz-slider-toggle-js-enabled"),document.querySelectorAll('.slider-toggle input[type="checkbox"]').forEach((e=>{const t=e.closest(".slider-toggle"),o=t.getAttribute("data-on-class"),l=t.getAttribute("data-off-class"),d=t.getAttribute("data-on-color"),a=t.getAttribute("data-off-color"),c=t.getAttribute("data-display-type")||"block",r=t.getAttribute("data-default-state")||"off",n=t.querySelector(".slider"),s=()=>{e.checked?(n.style.backgroundColor=d,document.querySelectorAll(`.${o}`).forEach((e=>{e.style.display=c})),document.querySelectorAll(`.${l}`).forEach((e=>{e.style.display="none"}))):(n.style.backgroundColor=a,document.querySelectorAll(`.${o}`).forEach((e=>{e.style.display="none"})),document.querySelectorAll(`.${l}`).forEach((e=>{e.style.display=c})))};"on"===r&&(e.checked=!0),s(),e.addEventListener("change",s)}))}));
+/******/ (() => { // webpackBootstrap
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+document.addEventListener('DOMContentLoaded', function () {
+  document.body.classList.add('npagz-slider-toggle-js-enabled');
+  const toggles = document.querySelectorAll('.slider-toggle input[type="checkbox"]');
+  toggles.forEach(toggle => {
+    const parent = toggle.closest('.slider-toggle');
+    const onClass = parent.getAttribute('data-on-class');
+    const offClass = parent.getAttribute('data-off-class');
+    const onColor = parent.getAttribute('data-on-color');
+    const offColor = parent.getAttribute('data-off-color');
+    const displayType = parent.getAttribute('data-display-type') || 'block';
+    const defaultState = parent.getAttribute('data-default-state') || 'off';
+    const slider = parent.querySelector('.slider');
+    const updateVisibility = () => {
+      if (toggle.checked) {
+        slider.style.backgroundColor = onColor;
+        document.querySelectorAll(`.${onClass}`).forEach(element => {
+          element.style.display = displayType;
+        });
+        document.querySelectorAll(`.${offClass}`).forEach(element => {
+          element.style.display = 'none';
+        });
+      } else {
+        slider.style.backgroundColor = offColor;
+        document.querySelectorAll(`.${onClass}`).forEach(element => {
+          element.style.display = 'none';
+        });
+        document.querySelectorAll(`.${offClass}`).forEach(element => {
+          element.style.display = displayType;
+        });
+      }
+    };
+
+    // Set initial visibility based on the default state
+    if (defaultState === 'on') {
+      toggle.checked = true;
+    }
+    updateVisibility();
+
+    // Add event listener for changes
+    toggle.addEventListener('change', updateVisibility);
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

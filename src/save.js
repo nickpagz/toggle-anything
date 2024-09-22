@@ -29,10 +29,21 @@ export default function save({ attributes }) {
 		customCSSButtonActivated,
 		customCSSTextWrapper,
 		customCSSOff,
-        customCSSOn,
+		customCSSOn,
 		displayType,
 		defaultState,
 	} = attributes;
+
+	const customStyles = `
+		${customCSSSwitchWrapper ? `.slider-toggle.${blockId} {${customCSSSwitchWrapper}}` : ''}
+		${customCSSSwitch ? `.slider-toggle.${blockId} .switch {${customCSSSwitch}}` : ''}
+		${customCSSSliderRound ? `.slider-toggle.${blockId} .slider.round {${customCSSSliderRound}}` : ''}
+		${customCSSButton ? `.slider-toggle.${blockId} .slider.round::before {${customCSSButton}}` : ''}
+		${customCSSButtonActivated ? `.slider-toggle.${blockId} .switch input:checked + .slider::before {${customCSSButtonActivated}}` : ''}
+		${customCSSTextWrapper ? `.slider-toggle.${blockId} .slider-text {${customCSSTextWrapper}}` : ''}
+		${customCSSOff ? `.slider-toggle.${blockId} .off-text {${customCSSOff}}` : ''}
+		${customCSSOn ? `.slider-toggle.${blockId} .on-text {${customCSSOn}}` : ''}
+	`.trim();
 
 	return (
 		<div { ...useBlockProps.save() }>
@@ -79,48 +90,15 @@ export default function save({ attributes }) {
 				</label>
 			</div>
 			<style>
-                {`
-					.slider-toggle.${blockId} {
-						${customCSSSwitchWrapper}
-					}
-					.slider-toggle.${blockId} .switch{
-						${customCSSSwitch}
-					}
-					.slider-toggle.${blockId} .slider.round {
-                        ${customCSSSliderRound}
-                    }
-                    .slider-toggle.${blockId} .slider.round::before {
-                        ${customCSSButton}
-                    }
-					.slider-toggle.${blockId} .switch input:checked + .slider::before {
-                        ${customCSSButtonActivated}
-                    }
-					.slider-toggle.${blockId} .slider-text {
-                        ${customCSSTextWrapper}
-                    }
-                    .slider-toggle.${blockId} .off-text {
-                        ${customCSSOff}
-                    }
-                    .slider-toggle.${blockId} .on-text {
-                        ${customCSSOn}
-                    }
-                `}
-            </style>
+				{customStyles}
+			</style>
 			<noscript>
-                <style>
-                    {`
-                        .slider-toggle.${blockId} {
-                            display: none;
-                        }
-						.${defaultState === 'on' ? offClass : onClass} {
-                            display: none;
-                        }
-                        .${defaultState === 'on' ? onClass : offClass} {
-                            display: block;
-                        }
-                    `}
-                </style>
-            </noscript>
+				<style>
+					{`.slider-toggle.${blockId} {display: none;}`}
+					{`.${defaultState === 'on' ? offClass : onClass} {display: none;}`}
+					{`.${defaultState === 'on' ? onClass : offClass} {display: ${displayType};}`}
+				</style>
+			</noscript>
 		</div>
 	);
 }
