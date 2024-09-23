@@ -1,0 +1,18 @@
+# Directories
+/.git
+/.github
+/.wordpress-org
+/.vscode
+/bin
+/tests
+/node_modules
+/vendor
+
+# Files
+.*
+composer.lock
+composer.json
+package-lock.json
+package.json
+README.md
+phpunit.xml.dist

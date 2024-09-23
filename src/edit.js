@@ -14,8 +14,8 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 		onColor,
 		offColor,
 		toggleColor,
-		sliderWidth,
-		sliderHeight,
+		toggleWidth,
+		toggleHeight,
 		buttonWidth,
 		borderRadius,
 		gap,
@@ -31,13 +31,12 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 		blockId,
 		customCSSSwitchWrapper,
 		customCSSSwitch,
-		customCSSSliderRound,
+		customCSSToggleRound,
 		customCSSButton,
 		customCSSButtonActivated,
 		customCSSTextWrapper,
 		customCSSOff,
         customCSSOn,
-		displayType,
 		defaultState,
 	} = attributes;
 
@@ -48,109 +47,96 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
     }, [blockId, setAttributes]);
 
 	const handleToggleChange = (event) => {
-		const slider = event.target.nextElementSibling;
+		const toggle = event.target.nextElementSibling;
 		if (event.target.checked) {
-			slider.style.backgroundColor = onColor;
+			toggle.style.backgroundColor = onColor;
 		} else {
-			slider.style.backgroundColor = offColor;
+			toggle.style.backgroundColor = offColor;
 		}
 	};
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Toggle Settings', 'slider-toggle-anything')} initialOpen={false}>
+				<PanelBody title={__('Toggle Settings', 'toggle-anything')} initialOpen={false}>
 					<TextControl
-						label={__('Off Class', 'slider-toggle-anything')}
+						label={__('Off Class', 'toggle-anything')}
 						value={offClass}
 						onChange={(value) => setAttributes({ offClass: value })}
 					/>
 					<TextControl
-						label={__('On Class', 'slider-toggle-anything')}
+						label={__('On Class', 'toggle-anything')}
 						value={onClass}
 						onChange={(value) => setAttributes({ onClass: value })}
 					/>
 					<SelectControl
-						label={__('Default State', 'slider-toggle-anything')}
+						label={__('Default State', 'toggle-anything')}
 						value={defaultState}
 						options={[
-							{ label: __('Off', 'slider-toggle-anything'), value: 'off' },
-							{ label: __('On', 'slider-toggle-anything'), value: 'on' }
+							{ label: __('Off', 'toggle-anything'), value: 'off' },
+							{ label: __('On', 'toggle-anything'), value: 'on' }
 						]}
 						onChange={(value) => setAttributes({ defaultState: value })}
-						help={__('Non-JS browsers will also show the default state. See the "Additional Information" section below for more information on non-JS browser handling.', 'slider-toggle-anything')}
+						help={__('Non-JS browsers will also show the default state. See the "Additional Information" section below for more information on non-JS browser handling.', 'toggle-anything')}
 					/>
-					<SelectControl
-                        label={__('Display Type', 'slider-toggle-anything')}
-                        value={displayType}
-                        options={[
-                            { label: __('Block (default)', 'slider-toggle-anything'), value: 'block' },
-                            { label: __('Flex', 'slider-toggle-anything'), value: 'flex' },
-                            { label: __('Inline', 'slider-toggle-anything'), value: 'inline' },
-                            { label: __('Inline-Block', 'slider-toggle-anything'), value: 'inline-block' },
-                            { label: __('Grid', 'slider-toggle-anything'), value: 'grid' },
-                        ]}
-                        onChange={(value) => setAttributes({ displayType: value })}
-						help={__('Applies to the toggle on/off classes. If you don\'t know what this is, leave it as "block". If it breaks the layout, experiment with the other settings.', 'slider-toggle-anything')}
-                    />
 				</PanelBody>
-				<PanelBody title={__('Toggle Design Settings', 'slider-toggle-anything')} initialOpen={false}>
+				<PanelBody title={__('Toggle Design Settings', 'toggle-anything')} initialOpen={false}>
 					<RangeControl
-						label={__('Slider Width', 'slider-toggle-anything')}
-						value={sliderWidth}
-						onChange={(value) => setAttributes({ sliderWidth: value })}
+						label={__('Toggle Width', 'toggle-anything')}
+						value={toggleWidth}
+						onChange={(value) => setAttributes({ toggleWidth: value })}
 						min={20}
 						max={500}
 					/>
 					<RangeControl
-						label={__('Slider Height', 'slider-toggle-anything')}
-						value={sliderHeight}
-						onChange={(value) => setAttributes({ sliderHeight: value })}
+						label={__('Toggle Height', 'toggle-anything')}
+						value={toggleHeight}
+						onChange={(value) => setAttributes({ toggleHeight: value })}
 						min={10}
 						max={200}
 					/>
 					<RangeControl
-						label={__('Button Width', 'slider-toggle-anything')}
+						label={__('Button Width', 'toggle-anything')}
 						value={buttonWidth}
 						onChange={(value) => setAttributes({ buttonWidth: value })}
 						min={20}
 						max={500}
 					/>
 					<RangeControl
-						label={__('Border Radius', 'slider-toggle-anything')}
+						label={__('Border Radius', 'toggle-anything')}
 						value={borderRadius}
 						onChange={(value) => setAttributes({ borderRadius: value })}
 						min={0}
 						max={100}
 					/>
 					<RangeControl
-						label={__('Gap', 'slider-toggle-anything')}
+						label={__('Gap', 'toggle-anything')}
 						value={gap}
 						onChange={(value) => setAttributes({ gap: value })}
 						min={-50}
 						max={50}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Toggle Text Settings', 'slider-toggle-anything')} initialOpen={false}>
+				<PanelBody title={__('Toggle Text Settings', 'toggle-anything')} initialOpen={false}>
 					<TextControl
-						label={__('Off Text', 'slider-toggle-anything')}
+						label={__('Off Text', 'toggle-anything')}
 						value={offText}
 						onChange={(value) => setAttributes({ offText: value })}
 					/>
 					<RangeControl
-						label={__('Tweak Left Spacing', 'slider-toggle-anything')}
+						label={__('Tweak Left Spacing', 'toggle-anything')}
 						value={paddingLeft}
 						onChange={(value) => setAttributes({ paddingLeft: value })}
 						min={0}
 						max={50}
 					/>
 					<TextControl
-						label={__('On Text', 'slider-toggle-anything')}
+						label={__('On Text', 'toggle-anything')}
 						value={onText}
 						onChange={(value) => setAttributes({ onText: value })}
 					/>
 					<RangeControl
-						label={__('Tweak Right Spacing', 'slider-toggle-anything')}
+						label={__('Tweak Right Spacing', 'toggle-anything')}
 						value={paddingRight}
 						onChange={(value) => setAttributes({ paddingRight: value })}
 						min={0}
@@ -162,135 +148,135 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 						onChange={(value) => setAttributes({ fontSize: value })}
 					/>
 					<SelectControl
-						label={__('Font Appearance', 'slider-toggle-anything')}
+						label={__('Font Appearance', 'toggle-anything')}
 						value={fontAppearance}
 						options={fontAppearanceOptions}
 						onChange={(value) => setAttributes({ fontAppearance: value })}
 					/>
 					<SelectControl
-						label={__('Font Weight', 'slider-toggle-anything')}
+						label={__('Font Weight', 'toggle-anything')}
 						value={fontWeight}
 						options={[
-							{ label: __('100', 'slider-toggle-anything'), value: 100 },
-							{ label: __('200', 'slider-toggle-anything'), value: 200 },
-							{ label: __('300', 'slider-toggle-anything'), value: 300 },
-							{ label: __('400', 'slider-toggle-anything'), value: 400 },
-							{ label: __('500', 'slider-toggle-anything'), value: 500 },
-							{ label: __('600', 'slider-toggle-anything'), value: 600 },
-							{ label: __('700', 'slider-toggle-anything'), value: 700 },
-							{ label: __('800', 'slider-toggle-anything'), value: 800 },
-							{ label: __('900', 'slider-toggle-anything'), value: 900 },
+							{ label: __('100', 'toggle-anything'), value: 100 },
+							{ label: __('200', 'toggle-anything'), value: 200 },
+							{ label: __('300', 'toggle-anything'), value: 300 },
+							{ label: __('400', 'toggle-anything'), value: 400 },
+							{ label: __('500', 'toggle-anything'), value: 500 },
+							{ label: __('600', 'toggle-anything'), value: 600 },
+							{ label: __('700', 'toggle-anything'), value: 700 },
+							{ label: __('800', 'toggle-anything'), value: 800 },
+							{ label: __('900', 'toggle-anything'), value: 900 },
 						]}
 						onChange={(value) => setAttributes({ fontWeight: value })}
 					/>
 					<SelectControl
-						label={__('Font Family', 'slider-toggle-anything')}
+						label={__('Font Family', 'toggle-anything')}
 						value={fontFamily}
 						options={fontFamilies}
 						onChange={(value) => setAttributes({ fontFamily: value })}
 					/>
 				</PanelBody>
 				<PanelColorSettings
-					title={__('Color Settings', 'slider-toggle-anything')}
+					title={__('Color Settings', 'toggle-anything')}
 					initialOpen={false}
 					enableAlpha
 					colorSettings={[
 						{
 							value: offColor,
 							onChange: (color) => setAttributes({ offColor: color }),
-							label: __('Off Background Color', 'slider-toggle-anything'),
+							label: __('Off Background Color', 'toggle-anything'),
 							colors,
 						},
 						{
 							value: onColor,
 							onChange: (color) => setAttributes({ onColor: color }),
-							label: __('On Background Color', 'slider-toggle-anything'),
+							label: __('On Background Color', 'toggle-anything'),
 							colors,
 						},
 						{
 							value: toggleColor,
 							onChange: (color) => setAttributes({ toggleColor: color }),
-							label: __('Toggle Button Color', 'slider-toggle-anything'),
+							label: __('Toggle Button Color', 'toggle-anything'),
 							colors,
 						},
 						{
 							value: fontColor,
 							onChange: (color) => setAttributes({ fontColor: color }),
-							label: __('Text Color', 'slider-toggle-anything'),
+							label: __('Text Color', 'toggle-anything'),
 							colors,
 						},
 					]}
 				/>
-				<PanelBody title={__('Custom CSS', 'slider-toggle-anything')} initialOpen={false}>
+				<PanelBody title={__('Custom CSS', 'toggle-anything')} initialOpen={false}>
 					<TextareaControl
-                        label={__('Switch Wrapper', 'slider-toggle-anything')}
+                        label={__('Switch Wrapper', 'toggle-anything')}
                         value={customCSSSwitchWrapper}
                         onChange={(value) => setAttributes({ customCSSSwitchWrapper: value })}
                     />
 					<TextareaControl
-                        label={__('Switch Body', 'slider-toggle-anything')}
+                        label={__('Switch Body', 'toggle-anything')}
                         value={customCSSSwitch}
                         onChange={(value) => setAttributes({ customCSSSwitch: value })}
                     />
 					<TextareaControl
-                        label={__('Slider', 'slider-toggle-anything')}
-                        value={customCSSSliderRound}
-                        onChange={(value) => setAttributes({ customCSSSliderRound: value })}
+                        label={__('Toggle', 'toggle-anything')}
+                        value={customCSSToggleRound}
+                        onChange={(value) => setAttributes({ customCSSToggleRound: value })}
                     />
 					<TextareaControl
-                        label={__('Button', 'slider-toggle-anything')}
+                        label={__('Button', 'toggle-anything')}
                         value={customCSSButton}
                         onChange={(value) => setAttributes({ customCSSButton: value })}
                     />
 					<TextareaControl
-                        label={__('Button Activated', 'slider-toggle-anything')}
+                        label={__('Button Activated', 'toggle-anything')}
                         value={customCSSButtonActivated}
                         onChange={(value) => setAttributes({ customCSSButtonActivated: value })}
                     />
 					<TextareaControl
-                        label={__('Text Wrapper', 'slider-toggle-anything')}
+                        label={__('Text Wrapper', 'toggle-anything')}
                         value={customCSSTextWrapper}
                         onChange={(value) => setAttributes({ customCSSTextWrapper: value })}
                     />
                     <TextareaControl
-                        label={__('Off Text', 'slider-toggle-anything')}
+                        label={__('Off Text', 'toggle-anything')}
                         value={customCSSOff}
                         onChange={(value) => setAttributes({ customCSSOff: value })}
                     />
                     <TextareaControl
-                        label={__('On Text', 'slider-toggle-anything')}
+                        label={__('On Text', 'toggle-anything')}
                         value={customCSSOn}
                         onChange={(value) => setAttributes({ customCSSOn: value })}
                     />
                 </PanelBody>
-				<PanelBody title={__('Additional Information', 'slider-toggle-anything')} initialOpen={false}>
-					<p>{__('The toggle button will be hidden on non-JS browsers as it won\'t be functional anyways.', 'slider-toggle-anything')}</p>
-					<p>{__('This block includes helper css classes to hide or show other selected blocks on non-JS browsers.', 'slider-toggle-anything')}</p>
-					<p>{__('Add the classes mentioned below to the Advanced > ADDITIONAL CSS CLASS(ES) field of the blocks you want to show or hide on non-JS browsers.', 'slider-toggle-anything')}</p>
-					<p>{__('Use the classes "slider-toggle-noscript-hide__block", "__flex", etc., to hide selected blocks in non-JS browsers.', 'slider-toggle-anything')}</p>
-					<p>{__('Use the classes "slider-toggle-noscript-show__block", "__flex", etc., to show selected blocks in non-JS browsers', 'slider-toggle-anything')}</p>
+				<PanelBody title={__('Additional Information', 'toggle-anything')} initialOpen={false}>
+					<p>{__('The toggle button will be hidden on non-JS browsers as it won\'t be functional anyways.', 'toggle-anything')}</p>
+					<p>{__('This block includes helper css classes to hide or show other selected blocks on non-JS browsers.', 'toggle-anything')}</p>
+					<p>{__('Add the classes mentioned below to the Advanced > ADDITIONAL CSS CLASS(ES) field of the blocks you want to show or hide on non-JS browsers.', 'toggle-anything')}</p>
+					<p>{__('Use the classes "toggle-anything-noscript-hide__block", "__flex", etc., to hide selected blocks in non-JS browsers.', 'toggle-anything')}</p>
+					<p>{__('Use the classes "toggle-anything-noscript-show__block", "__flex", etc., to show selected blocks in non-JS browsers', 'toggle-anything')}</p>
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
 				<div
-					className={`slider-toggle ${blockId}`}
+					className={`toggle-anything ${blockId}`}
 					data-on-class={onClass}
 					data-off-class={offClass}
 					data-default-state={defaultState}
 					style={{
-						'--slider-before-height': `${sliderHeight - 2 * gap}px`,
-						'--slider-before-width': `${buttonWidth}px`,
-						'--slider-before-border-radius': `${borderRadius}px`,
-						'--slider-before-left': `${gap}px`,
-						'--slider-before-bottom': `${gap}px`,
-						'--slider-before-bg-color': toggleColor,
-						'--slider-before-translate-x': `${sliderWidth - buttonWidth - 2 * gap}px`,
+						'--toggle-before-height': `${toggleHeight - 2 * gap}px`,
+						'--toggle-before-width': `${buttonWidth}px`,
+						'--toggle-before-border-radius': `${borderRadius}px`,
+						'--toggle-before-left': `${gap}px`,
+						'--toggle-before-bottom': `${gap}px`,
+						'--toggle-before-bg-color': toggleColor,
+						'--toggle-before-translate-x': `${toggleWidth - buttonWidth - 2 * gap}px`,
 					}}
 				>
-				<label className="switch" style={{ width: `${sliderWidth}px`, height: `${sliderHeight}px` }}>
+				<label className="switch" style={{ width: `${toggleWidth}px`, height: `${toggleHeight}px` }}>
 						<input type="checkbox" onChange={handleToggleChange} defaultChecked={defaultState === 'on'} />
-						<span className="slider round" style={{ backgroundColor: offColor, borderRadius: `${borderRadius}px` }}>
-							<span className="slider-text" style={{
+						<span className="toggle round" style={{ backgroundColor: offColor, borderRadius: `${borderRadius}px` }}>
+							<span className="toggle-text" style={{
 								display: 'flex',
 								justifyContent: 'space-between',
 								boxSizing: 'border-box',
@@ -313,28 +299,28 @@ const Edit = ({ attributes, setAttributes, fontSizes, fontFamilies, colors, font
 				</div>
 				<style>
                 {`
-					.slider-toggle.${blockId} {
+					.toggle-anything.${blockId} {
 						${customCSSSwitchWrapper}
 					}
-					.slider-toggle.${blockId} .switch{
+					.toggle-anything.${blockId} .switch{
 						${customCSSSwitch}
 					}
-					.slider-toggle.${blockId} .slider.round {
-                        ${customCSSSliderRound}
+					.toggle-anything.${blockId} .toggle.round {
+                        ${customCSSToggleRound}
                     }
-                    .slider-toggle.${blockId} .slider.round::before {
+                    .toggle-anything.${blockId} .toggle.round::before {
                         ${customCSSButton}
                     }
-					.slider-toggle.${blockId} .switch input:checked + .slider::before {
+					.toggle-anything.${blockId} .switch input:checked + .toggle::before {
                         ${customCSSButtonActivated}
                     }
-					.slider-toggle.${blockId} .slider-text {
+					.toggle-anything.${blockId} .toggle-text {
                         ${customCSSTextWrapper}
                     }
-                    .slider-toggle.${blockId} .off-text {
+                    .toggle-anything.${blockId} .off-text {
                         ${customCSSOff}
                     }
-                    .slider-toggle.${blockId} .on-text {
+                    .toggle-anything.${blockId} .on-text {
                         ${customCSSOn}
                     }
                 `}
@@ -351,13 +337,13 @@ export default compose(
 		return {
 			fontSizes: settings.fontSizes || [],
 			fontFamilies: [
-				{ label: __('Default', 'slider-toggle-anything'), value: '' },
+				{ label: __('Default', 'toggle-anything'), value: '' },
 				...(typography.fontFamilies?.theme || []).map(family => ({ label: family.name, value: family.fontFamily }))
 			],
 			colors: settings.colors || [],
 			fontAppearanceOptions: [
-				{ label: __('Normal', 'slider-toggle-anything'), value: 'normal' },
-				{ label: __('Italic', 'slider-toggle-anything'), value: 'italic' },
+				{ label: __('Normal', 'toggle-anything'), value: 'normal' },
+				{ label: __('Italic', 'toggle-anything'), value: 'italic' },
 			]
 		};
 	}),

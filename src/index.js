@@ -46,7 +46,7 @@ function addtoggleAnythingAttribute( settings, name ) {
 
 addFilter(
 	'blocks.registerBlockType',
-	'slider-toggle-anything/add-toggle-anything-attribute',
+	'toggle-anything/add-toggle-anything-attribute',
 	addtoggleAnythingAttribute
 );
 
@@ -55,23 +55,23 @@ function addInspectorControls( BlockEdit ) {
 		const { name, attributes, setAttributes } = props;
 
 		// Bail if the block is this one.
-		if ( name === 'nickpagz/slider-toggle-anything' ) {
+		if ( name === 'nickpagz/toggle-anything' ) {
 			return <BlockEdit { ...props } />;
 		}
 
 		// Retrieve all classes from toggle blocks
         const toggleClasses = getAllToggleClasses();
         const defaultOptions = [
-			{ label: 'No-script hide, block', value: 'slider-toggle-noscript-hide__block' },
-			{ label: 'No-script hide, flex', value: 'slider-toggle-noscript-hide__flex' },
-			{ label: 'No-script hide, inline', value: 'slider-toggle-noscript-hide__inline' },
-			{ label: 'No-script hide, inline-block', value: 'slider-toggle-noscript-hide__inline-block' },
-			{ label: 'No-script hide, grid', value: 'slider-toggle-noscript-hide__grid' },
-			{ label: 'No-script show, block', value: 'slider-toggle-noscript-show__block' },
-			{ label: 'No-script show, flex', value: 'slider-toggle-noscript-show__flex' },
-			{ label: 'No-script show, inline', value: 'slider-toggle-noscript-show__inline' },
-			{ label: 'No-script show, inline-block', value: 'slider-toggle-noscript-show__inline-block' },
-			{ label: 'No-script show, grid', value: 'slider-toggle-noscript-show__grid' },
+			{ label: 'No-script hide, block', value: 'toggle-anything-noscript-hide__block' },
+			{ label: 'No-script hide, flex', value: 'toggle-anything-noscript-hide__flex' },
+			{ label: 'No-script hide, inline', value: 'toggle-anything-noscript-hide__inline' },
+			{ label: 'No-script hide, inline-block', value: 'toggle-anything-noscript-hide__inline-block' },
+			{ label: 'No-script hide, grid', value: 'toggle-anything-noscript-hide__grid' },
+			{ label: 'No-script show, block', value: 'toggle-anything-noscript-show__block' },
+			{ label: 'No-script show, flex', value: 'toggle-anything-noscript-show__flex' },
+			{ label: 'No-script show, inline', value: 'toggle-anything-noscript-show__inline' },
+			{ label: 'No-script show, inline-block', value: 'toggle-anything-noscript-show__inline-block' },
+			{ label: 'No-script show, grid', value: 'toggle-anything-noscript-show__grid' },
 		];
         const options = [
 			{ label: 'None', value: '' },
@@ -92,7 +92,7 @@ function addInspectorControls( BlockEdit ) {
 						<PanelBody
 							title={ __(
 								'Toggle Anything',
-								'slider-toggle-anything'
+								'toggle-anything'
 							) }
 							initialOpen={false}
 						>
@@ -115,7 +115,7 @@ function addInspectorControls( BlockEdit ) {
 
 addFilter(
 	'editor.BlockEdit',
-	'slider-toggle-anything/add-inspector-controls',
+	'toggle-anything/add-inspector-controls',
 	addInspectorControls
 );
 
@@ -134,7 +134,7 @@ function getAllToggleClasses() {
 	const toggleClassesSet = new Set();  // Use a Set to store unique class names
 
 	function addClassesFromBlock(block) {
-		if (block.name === 'nickpagz/slider-toggle-anything') {
+		if (block.name === 'nickpagz/toggle-anything') {
 			const { onClass, offClass } = block.attributes;
 			toggleClassesSet.add(onClass);
 			toggleClassesSet.add(offClass);

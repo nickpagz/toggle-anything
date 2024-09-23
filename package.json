@@ -1,7 +1,7 @@
 {
-	"name": "slider-toggle-anything",
-	"version": "0.2.1",
-	"description": "Example block scaffolded with Create Block tool.",
+	"name": "toggle-anything",
+	"version": "1.0.0",
+	"description": "A customizable toggle switch to control visibility of any block.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

@@ -1,12 +1,12 @@
-=== Slider Toggle Anything ===
+=== Toggle Anything ===
 Contributors:      Nick Pagazani
-Tags:              block, switch, toggle
-Tested up to:      6.6.1
-Stable tag:        0.2.1
+Tags:              block, switch, toggle, hide
+Tested up to:      6.6
+Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-A customizable toggle switch/slider used to control visibility of other blocks on the page.
+A customizable toggle switch used to control visibility of other blocks on the page.
 
 == Description ==
 
@@ -17,9 +17,8 @@ A common example is a pricing page where a user can toggle between monthly vs ye
 * Toggle visibility of any element on the page. Does not need to be a nested block.
 * Set a default toggle state.
 * Choose your own "On" and "Off" state class names.
-* Choose display types (block, flex, etc).
 * Non-Javascript friendly. Default state content displays, toggle is hidden.
-* Additional class to hide other related components on non-Javascript browsers.
+* Additional classes to show or hide other related components on non-Javascript browsers.
 * Multiple toggles allowed on the same page.
 * Multiple design configurations for each toggle.
 * Option for adding text in on/off positions.
@@ -46,6 +45,12 @@ Yes.
 1. Coming soon
 
 == Changelog ==
+
+= 1.0.0 =
+* Add selector components for making classes easier to add
+* Use HTML Tag processor API for adding classes on rendered page
+* Reduce whitespace in inline css in the save markup
+* Conditionally add inline css selectors
 
 = 0.2.1 =
 * Tweak no-js functionality
