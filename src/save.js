@@ -7,8 +7,8 @@ export default function save({ attributes }) {
 		onColor,
 		offColor,
 		toggleColor,
-		sliderWidth,
-		sliderHeight,
+		toggleWidth,
+		toggleHeight,
 		buttonWidth,
 		borderRadius,
 		gap,
@@ -24,40 +24,49 @@ export default function save({ attributes }) {
 		blockId,
 		customCSSSwitchWrapper,
 		customCSSSwitch,
-		customCSSSliderRound,
+		customCSSToggleRound,
 		customCSSButton,
 		customCSSButtonActivated,
 		customCSSTextWrapper,
 		customCSSOff,
-        customCSSOn,
-		displayType,
+		customCSSOn,
 		defaultState,
 	} = attributes;
+
+	const customStyles = `
+		${customCSSSwitchWrapper ? `.toggle-anything.${blockId} {${customCSSSwitchWrapper}}` : ''}
+		${customCSSSwitch ? `.toggle-anything.${blockId} .switch {${customCSSSwitch}}` : ''}
+		${customCSSToggleRound ? `.toggle-anything.${blockId} .toggle.round {${customCSSToggleRound}}` : ''}
+		${customCSSButton ? `.toggle-anything.${blockId} .toggle.round::before {${customCSSButton}}` : ''}
+		${customCSSButtonActivated ? `.toggle-anything.${blockId} .switch input:checked + .toggle::before {${customCSSButtonActivated}}` : ''}
+		${customCSSTextWrapper ? `.toggle-anything.${blockId} .toggle-text {${customCSSTextWrapper}}` : ''}
+		${customCSSOff ? `.toggle-anything.${blockId} .off-text {${customCSSOff}}` : ''}
+		${customCSSOn ? `.toggle-anything.${blockId} .on-text {${customCSSOn}}` : ''}
+	`.trim();
 
 	return (
 		<div { ...useBlockProps.save() }>
 			<div
-				className={`slider-toggle ${blockId}`}
+				className={`toggle-anything ${blockId}`}
 				data-on-class={onClass}
 				data-off-class={offClass}
 				data-on-color={onColor}
-				data-off-color={offColor}
-				data-display-type={displayType}
+				data-off-color={offColor}	
 				data-default-state={defaultState}
 				style={{
-					'--slider-before-height': `${sliderHeight - 2 * gap}px`,
-					'--slider-before-width': `${buttonWidth}px`,
-					'--slider-before-border-radius': `${borderRadius}px`,
-					'--slider-before-left': `${gap}px`,
-					'--slider-before-bottom': `${gap}px`,
-					'--slider-before-bg-color': toggleColor,
-					'--slider-before-translate-x': `${sliderWidth - buttonWidth - 2 * gap}px`,
+					'--toggle-before-height': `${toggleHeight - 2 * gap}px`,
+					'--toggle-before-width': `${buttonWidth}px`,
+					'--toggle-before-border-radius': `${borderRadius}px`,
+					'--toggle-before-left': `${gap}px`,
+					'--toggle-before-bottom': `${gap}px`,
+					'--toggle-before-bg-color': toggleColor,
+					'--toggle-before-translate-x': `${toggleWidth - buttonWidth - 2 * gap}px`,
 				}}
 			>
-				<label className="switch" style={{ width: `${sliderWidth}px`, height: `${sliderHeight}px` }}>
+				<label className="switch" style={{ width: `${toggleWidth}px`, height: `${toggleHeight}px` }}>
 					<input type="checkbox" />
-					<span className="slider round" style={{ backgroundColor: offColor, borderRadius: `${borderRadius}px` }}>
-						<span className="slider-text" style={{
+					<span className="toggle round" style={{ backgroundColor: offColor, borderRadius: `${borderRadius}px` }}>
+						<span className="toggle-text" style={{
 							display: 'flex',
 							justifyContent: 'space-between',
 							boxSizing: 'border-box',
@@ -79,48 +88,14 @@ export default function save({ attributes }) {
 				</label>
 			</div>
 			<style>
-                {`
-					.slider-toggle.${blockId} {
-						${customCSSSwitchWrapper}
-					}
-					.slider-toggle.${blockId} .switch{
-						${customCSSSwitch}
-					}
-					.slider-toggle.${blockId} .slider.round {
-                        ${customCSSSliderRound}
-                    }
-                    .slider-toggle.${blockId} .slider.round::before {
-                        ${customCSSButton}
-                    }
-					.slider-toggle.${blockId} .switch input:checked + .slider::before {
-                        ${customCSSButtonActivated}
-                    }
-					.slider-toggle.${blockId} .slider-text {
-                        ${customCSSTextWrapper}
-                    }
-                    .slider-toggle.${blockId} .off-text {
-                        ${customCSSOff}
-                    }
-                    .slider-toggle.${blockId} .on-text {
-                        ${customCSSOn}
-                    }
-                `}
-            </style>
+				{customStyles}
+			</style>
 			<noscript>
-                <style>
-                    {`
-                        .slider-toggle.${blockId} {
-                            display: none;
-                        }
-						.${defaultState === 'on' ? offClass : onClass} {
-                            display: none;
-                        }
-                        .${defaultState === 'on' ? onClass : offClass} {
-                            display: block;
-                        }
-                    `}
-                </style>
-            </noscript>
+				<style>
+					{`.toggle-anything.${blockId} {display: none;}`}
+					{`.${defaultState === 'on' ? offClass : onClass} {display: none;}`}
+				</style>
+			</noscript>
 		</div>
 	);
 }

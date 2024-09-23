@@ -2,14 +2,14 @@
  * Editor Styles
  */
 
-.wp-block-nickpagz-slider-toggle-anything {
-	.slider-toggle {
+.wp-block-nickpagz-toggle-anything {
+	.toggle-anything {
 		display: flex;
 		align-items: center;
 	}
 }
 
-.slider-toggle-noscript-hide {
+.toggle-anything-noscript-hide {
 
 	&__block {
 		display: block;
@@ -32,7 +32,7 @@
 	}
 }
 
-.slider-toggle-noscript-show {
+.toggle-anything-noscript-show {
 
 	&__block {
 		display: block;
