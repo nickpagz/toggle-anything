@@ -1,5 +1,5 @@
 === Toggle Anything ===
-Contributors:      Nick Pagazani
+Contributors:      npagazani
 Tags:              block, switch, toggle, hide
 Tested up to:      6.6
 Stable tag:        1.0.0
