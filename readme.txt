@@ -40,9 +40,20 @@ Yes.
 
 Yes.
 
+= What about non-Javascript enabled browsers? =
+
+We've got you covered there too. The toggle will automatically be hidden, and the default toggle class will be displayed.
+The block also includes other "no-JS" classes you can use for hiding/showing content.
+
 == Screenshots ==
 
-1. Coming soon
+1. General block view and settings
+2. Basic toggle settings for classes and default state
+3. Optional text settings
+4. Various styling options
+5. Setting the show/hide classes on other blocks
+6. Pricing page example
+
 
 == Changelog ==
 
